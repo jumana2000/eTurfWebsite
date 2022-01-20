@@ -1,0 +1,26 @@
+{% extends 'adminindex.html' %}
+{% block content %}
+
+<div class="card mb-3"  style="margin: 50px;">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Add Category</h6>
+    </div>
+    <div class="card-body">
+      <form method="post" action="{% url 'catdata' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter Name">
+        </div>
+      
+        <div class="form-group">
+          <div class="custom-file">
+            <input type="file" name="file">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
