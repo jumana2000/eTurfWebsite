@@ -5,3 +5,4 @@ from . models import *
 
 admin.site.register(Categorydb)
 admin.site.register(Playgrounddb)
+admin.site.register(Managerdb)
