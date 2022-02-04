@@ -23,7 +23,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin_eturf/',include('admin_eturf.urls')),
-    path('managerapp/',include('managerapp.urls'))
+    path('managerapp/',include('managerapp.urls')),
+    path('eturf_web/',include('eturf_web.urls'))
 ]
 
 if settings.DEBUG:
