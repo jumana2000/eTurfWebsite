@@ -2,6 +2,8 @@ from datetime import date
 from django.db import models
 from django.db.models.deletion import CASCADE
 
+from admin_eturf.models import Managerdb
+
 # Create your models here.
 
 class Userdb(models.Model):
@@ -15,6 +17,7 @@ class Userdb(models.Model):
 
 class Bookdb(models.Model):
     userid = models.ForeignKey(Userdb,on_delete=CASCADE,null=True,blank=False)
+    managerid = models.ForeignKey(Managerdb,on_delete=CASCADE,null=True,blank=False)
     start_time = models.TimeField(null=True,blank=False)
     end_time = models.TimeField(null=True,blank=False)
     date = models.DateField(null=True,blank=False)

@@ -53,10 +53,10 @@ def userlogin(request):
     password_u = request.POST.get('password')
     if Userdb.objects.filter(username=username_u,password=password_u).exists():
         data = Userdb.objects.filter(username=username_u,password=password_u).values('email','mobile','id').first()
-        request.session['username'] = username_u
+        request.session['username_u'] = username_u
         request.session['email'] = data['email']
         request.session['mobile'] = data['mobile']
-        request.session['password'] = password_u
+        request.session['password_u'] = password_u
         request.session['userid'] = data['id']
         return redirect('eturf_index')
     else:
@@ -64,8 +64,8 @@ def userlogin(request):
         return redirect('eturf_index')
 
 def userlogout(request):
-    del request.session['username']
-    del request.session['password']
+    del request.session['username_u']
+    del request.session['password_u']
     del request.session['email']
     del request.session['mobile']
     del request.session['userid']

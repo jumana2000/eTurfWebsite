@@ -1,10 +1,16 @@
 from django.shortcuts import render,redirect
 from admin_eturf.models import *
+from eturf_web.models import *
 
 # Create your views here.
 
 def managerindex(request):
     return render(request,'managerindex.html')
+
+def booking_history(request):
+    ground = request.session.get('playground')
+    data = Bookdb.objects.filter(ground=ground)
+    return render(request,'booking_history.html',{'data':data})
 
 def m_login(request):
     return render(request,'managerlogin.html')
@@ -14,10 +20,10 @@ def managerlogin(request):
     password_m = request.POST.get('password')
     if Managerdb.objects.filter(username=username_m,password=password_m).exists():
         data = Managerdb.objects.filter(username=username_m,password=password_m).values('email','image','playground','id').first()
-        request.session['username'] = username_m
-        request.session['email'] = data['email']
+        request.session['username_m'] = username_m
+        request.session['email_m'] = data['email']
         request.session['image'] = data['image']
-        request.session['password'] = password_m
+        request.session['password_m'] = password_m
         request.session['playground'] = data['playground']
         request.session['managerid'] = data['id']
         return redirect('managerindex')
@@ -25,10 +31,10 @@ def managerlogin(request):
         return redirect('m_login')
 
 def managerlogout(request):
-    del request.session['username']
-    del request.session['password']
+    del request.session['username_m']
+    del request.session['password_m']
     del request.session['image']
-    del request.session['email']
+    del request.session['email_m']
     del request.session['playground']
     del request.session['managerid']
     return redirect('m_login')

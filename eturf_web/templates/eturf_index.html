@@ -62,7 +62,7 @@
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="{% url 'eturf_index' %}" class="nav-link">Home</a></li>
                 <li><a href="{% url 'eturf_list' %}" class="nav-link">Turf</a></li>
-                {% if 'username' in request.session %}
+                {% if 'username_u' in request.session %}
                 <li><a href="{% url 'userlogout' %}" class="nav-link">Logout</a></li>
                 {% else %}
                 <li><a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">Login</a></li>
