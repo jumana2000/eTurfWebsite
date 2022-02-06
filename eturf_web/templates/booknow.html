@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-9 mx-auto text-center">
-            <h1 class="text-white">Contact</h1>
+            <h1 class="text-white">Book Now</h1>
           </div>
         </div>
       </div>
@@ -17,23 +17,41 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-7">
-            <form action="#">
+            {% for i in data %}
+            
+            <h2>{{i.ground}} - Rs. {{i.price}}</h2>
+
+            <form action="{% url 'bookdata' %}" method="post">
+              {% csrf_token %}
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Name">
+                <input type="hidden" name="userid" value="{{request.session.userid}}"> 
+                <input type="hidden" value="{{i.ground}}" name="ground">
+                <input type="hidden" value="{{i.price}}" name="price">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Email">
+                <input type="date" class="form-control" name="date">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject">
+               <select name="start_time">
+                 <option value="">Start time</option>
+                 <option value="15:00:00">3:00 PM</option>
+                 <option value="16:00:00">4:00 PM</option>
+                 <option value="17:00:00">5:00 PM</option>
+               </select>
+               <select name="end_time">
+                <option value="">End Time</option>
+                <option value="16:00:00">4:00 PM</option>
+                <option value="17:00:00">5:00 PM</option>
+                <option value="18:00:00">6:00 PM</option>
+              </select>
               </div>
+              
               <div class="form-group">
-                <textarea name="" class="form-control" id="" cols="30" rows="10" placeholder="Write something..."></textarea>
+                <input type="submit" class="btn btn-primary py-3 px-5" value="Book Now">
               </div>
-              <div class="form-group">
-                <input type="submit" class="btn btn-primary py-3 px-5" value="Send Message">
-              </div>
-            </form>  
+            </form> 
+            
+            {% endfor %} 
           </div>
           <div class="col-lg-4 ml-auto">
             
@@ -57,5 +75,15 @@
         </div>
       </div>
     </div>
+
+
+
+  {% if messages %}
+
+  {% for message in messages %}
+  <script>alert("{{ message }}")</script> 
+  {% endfor %}
+
+  {% endif %}
 
 {% endblock %}

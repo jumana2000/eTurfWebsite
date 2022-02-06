@@ -33,7 +33,7 @@
               <h3 class="mb-4"><a href="#">{{i.ground}}</a></h3>
               <span class="meta">{{i.location}}</span>
               <p>{{i.price}}</p>
-              <p><a href="#"></a>Book Now</p>
+              <p><a href="{% url 'booknow' turfid=i.id %}">Book Now</a></p>
             </div>
           </div>
         </div>

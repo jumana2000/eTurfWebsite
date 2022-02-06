@@ -9,6 +9,8 @@
 
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 
   <link rel="stylesheet" href="{% static 'eturfstatic/fonts/icomoon/style.css' %}">
 
@@ -58,11 +60,15 @@
           <div class="ml-auto">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="active"><a href="{% url 'eturf_index' %}" class="nav-link">Home</a></li>
                 <li><a href="{% url 'eturf_list' %}" class="nav-link">Turf</a></li>
-                <li><a href="players.html" class="nav-link">Login</a></li>
-                <li><a href="blog.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                {% if 'username' in request.session %}
+                <li><a href="{% url 'userlogout' %}" class="nav-link">Logout</a></li>
+                {% else %}
+                <li><a href="" class="nav-link" data-toggle="modal" data-target="#modalLoginForm">Login</a></li>
+                {% endif %}
+                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
               </ul>
             </nav>
 
@@ -83,7 +89,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
             <div id="date-countdown"></div>
             <p>
-              <a href="#" class="btn btn-primary py-3 px-4 mr-3">Book Turf</a>
+              <a href="{% url 'eturf_list' %}" class="btn btn-primary py-3 px-4 mr-3">Book Turf</a>
               <a href="#" class="more light">Learn More</a>
             </p>  
           </div>
@@ -502,6 +508,49 @@
 
 
   <script src="{% static 'eturfstatic/js/main.js' %}"></script>
+
+
+
+  <div class="modal" id="modalLoginForm" style="padding-top: 50px;" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <strong><b>Sign In</b></strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" action="{% url 'userlogin' %}">
+        {% csrf_token %}
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="text" size="35" placeholder="Username" name="username">
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <input type="password" size="35" placeholder="Password" name="password">
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" value="Login">
+      </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+{% if messages %}
+
+  {% for message in messages %}
+  <script>alert("{{ message }}")</script> 
+  {% endfor %}
+
+{% endif %}
 
 </body>
 
