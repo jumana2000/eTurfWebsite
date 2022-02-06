@@ -33,6 +33,11 @@ def bookdata(request):
             data.save()
     return redirect('eturf_index')
 
+def mybooking(request):
+    userid = request.session.get('userid')
+    data = Bookdb.objects.filter(userid=userid)
+    return render(request,'mybooking.html',{'data':data})
+
 def userregister(request):
     return render(request,'userregister.html')
 
