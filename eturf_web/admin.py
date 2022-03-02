@@ -4,3 +4,4 @@ from . models import *
 
 admin.site.register(Userdb)
 admin.site.register(Bookdb)
+admin.site.register(Contactdb)

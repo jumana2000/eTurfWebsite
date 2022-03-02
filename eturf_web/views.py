@@ -1,3 +1,4 @@
+from email import message
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from admin_eturf.models import *
@@ -37,6 +38,19 @@ def mybooking(request):
     userid = request.session.get('userid')
     data = Bookdb.objects.filter(userid=userid)
     return render(request,'mybooking.html',{'data':data})
+
+def contact(request):
+    return render(request,'contact.html')
+
+def contact_data(request):
+    if request.method == 'POST':
+        name_c = request.POST.get('name')
+        email_c = request.POST.get('email')
+        subject_c = request.POST.get('subject')
+        message_c = request.POST.get('message')
+        data = Contactdb(name=name_c,email=email_c,subject=subject_c,message=message_c)
+        data.save()
+    return redirect('eturf_index')
 
 def userregister(request):
     return render(request,'userregister.html')

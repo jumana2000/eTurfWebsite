@@ -23,3 +23,9 @@ class Bookdb(models.Model):
     date = models.DateField(null=True,blank=False)
     price = models.IntegerField(null=True,blank=False)
     ground = models.CharField(max_length=100,null=True,blank=False)
+
+class Contactdb(models.Model):
+    name = models.CharField(max_length=100,null=True,blank=False)
+    email = models.EmailField(max_length=100,null=True,blank=False)
+    subject = models.CharField(max_length=100,null=True,blank=False)
+    message = models.TextField(max_length=100,null=True,blank=False)

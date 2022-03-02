@@ -1,0 +1,38 @@
+{% extends 'adminindex.html' %}
+{% block content %}
+
+  <div class="col-lg-12 mb-4">
+              <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
+                  <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i
+                      class="fas fa-chevron-right"></i></a>
+                </div>
+                <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>S.no</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject/th>
+                        <th>Message</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data %}
+                      <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.subject}}</td>
+                        <td>{{i.message}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                <div class="card-footer"></div>
+              </div>
+            </div>
+{% endblock %}

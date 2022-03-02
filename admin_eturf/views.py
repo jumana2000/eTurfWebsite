@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from admin_eturf.models import Categorydb, Managerdb, Playgrounddb
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
+from eturf_web.models import *
 
 # Create your views here.
 
@@ -60,6 +61,10 @@ def managerdata(request):
 def viewmanager(request):
     data = Managerdb.objects.all()
     return render(request,'viewmanager.html',{'data':data})
+
+def message(request):
+    data = Contactdb.objects.all()
+    return render(request,'message.html',{'data':data})
 
 def ad_login(request):
     return render(request,'adminlogin.html')
