@@ -5,7 +5,9 @@ from eturf_web.models import *
 # Create your views here.
 
 def managerindex(request):
-    return render(request,'managerindex.html')
+    ground = request.session.get('playground')
+    bcount = Bookdb.objects.filter(ground=ground).count
+    return render(request,'managerindex.html',{'bcount':bcount})
 
 def booking_history(request):
     ground = request.session.get('playground')
