@@ -7,10 +7,16 @@ from eturf_web.models import *
 # Create your views here.
 
 def adminindex(request):
-    return render(request,'adminindex.html')
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
+    tcount = Playgrounddb.objects.all().count()
+    ucount = Userdb.objects.all().count()
+    return render(request,'adminindex.html',{'mcount':mcount,'bcount':bcount,'tcount':tcount,'ucount':ucount})
 
 def addcategory(request):
-    return render(request,'addcategory.html')
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
+    return render(request,'addcategory.html',{'mcount':mcount,'bcount':bcount})
 
 def catdata(request):
     if request.method == 'POST':
@@ -21,12 +27,16 @@ def catdata(request):
     return redirect('viewcategory')
 
 def viewcategory(request):
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
     data = Categorydb.objects.all()
-    return render(request,'viewcategory.html',{'data':data})
+    return render(request,'viewcategory.html',{'data':data,'mcount':mcount,'bcount':bcount})
 
 def addplaygrounds(request):
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
     data = Categorydb.objects.all()
-    return render(request,'addplaygrounds.html',{'data':data})
+    return render(request,'addplaygrounds.html',{'data':data,'mcount':mcount,'bcount':bcount})
 
 def playground_data(request):
     if request.method == 'POST':
@@ -40,12 +50,16 @@ def playground_data(request):
     return redirect('addplaygrounds')
 
 def viewplayground(request):
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
     data = Playgrounddb.objects.all()
-    return render(request,'viewplayground.html',{'data':data})
+    return render(request,'viewplayground.html',{'data':data,'mcount':mcount,'bcount':bcount})
 
 def addmanagers(request):
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
     data = Playgrounddb.objects.all()
-    return render(request,'addmanagers.html',{'data':data})
+    return render(request,'addmanagers.html',{'data':data,'mcount':mcount,'bcount':bcount})
 
 def managerdata(request):
     if request.method == 'POST':
@@ -59,12 +73,16 @@ def managerdata(request):
     return redirect('viewmanager')
 
 def viewmanager(request):
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
     data = Managerdb.objects.all()
-    return render(request,'viewmanager.html',{'data':data})
+    return render(request,'viewmanager.html',{'data':data,'mcount':mcount,'bcount':bcount})
 
 def message(request):
+    mcount = Contactdb.objects.all().count()
+    bcount = Bookdb.objects.all().count()
     data = Contactdb.objects.all()
-    return render(request,'message.html',{'data':data})
+    return render(request,'message.html',{'data':data,'mcount':mcount,'bcount':bcount})
 
 def ad_login(request):
     return render(request,'adminlogin.html')

@@ -6,13 +6,15 @@ from eturf_web.models import *
 
 def managerindex(request):
     ground = request.session.get('playground')
-    bcount = Bookdb.objects.filter(ground=ground).count
+    bcount = Bookdb.objects.filter(ground=ground).count()
     return render(request,'managerindex.html',{'bcount':bcount})
 
 def booking_history(request):
     ground = request.session.get('playground')
+    bcount = Bookdb.objects.filter(ground=ground).count()
+    ground = request.session.get('playground')
     data = Bookdb.objects.filter(ground=ground)
-    return render(request,'booking_history.html',{'data':data})
+    return render(request,'booking_history.html',{'data':data,'bcount':bcount})
 
 def m_login(request):
     return render(request,'managerlogin.html')
