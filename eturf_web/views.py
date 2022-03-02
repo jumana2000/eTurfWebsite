@@ -42,6 +42,9 @@ def mybooking(request):
 def contact(request):
     return render(request,'contact.html')
 
+def about(request):
+    return render(request,'about.html')
+
 def contact_data(request):
     if request.method == 'POST':
         name_c = request.POST.get('name')

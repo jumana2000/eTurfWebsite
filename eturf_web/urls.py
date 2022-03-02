@@ -9,6 +9,7 @@ urlpatterns = [
     path('bookdata',views.bookdata,name='bookdata'),
     path('mybooking',views.mybooking,name='mybooking'),
     path('contact',views.contact,name='contact'),
+    path('about',views.about,name='about'),
     path('contact_data',views.contact_data,name='contact_data'),
     path('userregister',views.userregister,name='userregister'),
     path('u_register',views.u_register,name='u_register'),
