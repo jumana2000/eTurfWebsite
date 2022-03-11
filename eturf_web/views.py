@@ -1,4 +1,4 @@
-from email import message
+
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from admin_eturf.models import *

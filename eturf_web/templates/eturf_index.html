@@ -92,7 +92,7 @@
             <div id="date-countdown"></div>
             <p>
               <a href="{% url 'eturf_list' %}" class="btn btn-primary py-3 px-4 mr-3">Book Turf</a>
-              <a href="#" class="more light">Learn More</a>
+             
             </p>  
           </div>
         </div>
@@ -125,16 +125,16 @@
           {% for i in data %}
           <div class="col-md-4">
             <div class="post-entry">
-              <a href="#">
+              <a href="{% url 'eturf_list' %}">
                 <img src="{{i.img.url}}" style="width: 400px; height: 400px;" alt="Image" class="img-fluid">
               </a>
               <div class="caption">
                 <div class="caption-inner">
-                  <h3 class="mb-3">{{i.ground}}</h3>
+                  <a href="{% url 'eturf_list' %}"><h3 class="mb-3">{{i.ground}}</h3></a>
                   <div class="author d-flex align-items-center">
                     
                     <div class="text">
-                      <h4>{{i.location}}</h4>
+                      <a href="{% url 'eturf_list' %}"><h4>{{i.location}}</h4></a>
                       <span>{{i.price}} &bullet; {{i.category}}</span>
                     </div>
                   </div>
