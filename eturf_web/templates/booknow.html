@@ -46,10 +46,15 @@
                 <option value="18:00:00">6:00 PM</option>
               </select>
               </div>
-              
+              {% if 'username_u' in request.session %}
               <div class="form-group">
                 <input type="submit" class="btn btn-primary py-3 px-5" value="Book Now">
               </div>
+              {% else %}
+              <div class="form-group">
+               <p>Please Login to book you turf</p>
+              </div>
+              {% endif %}
             </form> 
             
             {% endfor %} 
