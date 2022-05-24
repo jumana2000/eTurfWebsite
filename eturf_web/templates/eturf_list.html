@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="row">
-        {% for i in data %}
+        {% for i in pg.object_list %}
         <div class="col-lg-4 mb-4">
           <div class="custom-media d-block">
             <div class="img mb-4">
@@ -44,14 +44,15 @@
       <div class="row justify-content-center">
         <div class="col-lg-7 text-center">
           <div class="custom-pagination">
-            <a href="#">1</a>
-            <span>2</span>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
+            {% for p in pg.paginator.page_range %}
+            <a href="?page={{p}}" {% if pg.number == p %} active {% endif %}">{{p}}</a>
+            {% endfor %} 
           </div>
         </div>
       </div>
+
+
+      
     </div> 
     
 

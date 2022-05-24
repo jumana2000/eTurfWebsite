@@ -1,6 +1,18 @@
 {% extends 'adminindex.html' %}
 {% block content %}
 
+  <style>
+ .price{
+    color: #6e707e;
+    background-color: #eaecf4;
+    border-color: #e3e6f0;
+    vertical-align: bottom;
+    border-bottom: 2px solid #e3e6f0;    
+    padding: 0.75rem;
+    border-top: 1px solid #e3e6f0;
+ }
+  </style>
+
   <div class="col-lg-12 mb-4">
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -14,7 +26,7 @@
                         <th>Playground Name</th>
                         <th>Location</th>
                         <th>Category</th>
-                        <td>Price</td>
+                        <td class="price"><strong>Price</strong></td>
                         <th>Image</th>
                         <th>Edit</th>
                         <th>Delete</th>

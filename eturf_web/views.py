@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from admin_eturf.models import *
 from . models import *
 from django.contrib import messages
-
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 # Create your views here.
 
 def eturf_index(request):
@@ -13,7 +13,17 @@ def eturf_index(request):
 
 def eturf_list(request):
     data = Playgrounddb.objects.all()
-    return render(request,'eturf_list.html',{'data':data})
+    
+    paginator = Paginator(data, 3)
+    try:
+        page = int(request.GET.get('page', '1'))
+    except:
+        page = 1
+    try:
+        pro = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        pro = paginator.page(paginator.num_pages)
+    return render(request,'eturf_list.html',{ 'pg': pro })
 
 def booknow(request,turfid):
     data = Playgrounddb.objects.filter(id=turfid)

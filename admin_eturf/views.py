@@ -47,7 +47,7 @@ def playground_data(request):
         img_p = request.FILES['img']
         data = Playgrounddb(ground=ground_name,location=location_p,category=category_p,price=price_p,img=img_p)
         data.save()
-    return redirect('addplaygrounds')
+    return redirect('viewplayground')
 
 def viewplayground(request):
     mcount = Contactdb.objects.all().count()
